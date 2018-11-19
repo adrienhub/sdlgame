@@ -22,3 +22,4 @@ private:
 };
 
 #endif //GAME_H
+//https://stackoverflow.com/questions/13809187/sdl-c-issues-window-in-wait-status

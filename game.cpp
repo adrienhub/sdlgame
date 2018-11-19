@@ -16,7 +16,9 @@ Game::~Game() {
 	SDL_Quit();
 }
 
-void Game::loop() {
+void Game::loop() {	
+	//while loop makes mouse windows wait mode? -> try SDL EVENT
+	//https://stackoverflow.com/questions/13809187/sdl-c-issues-window-in-wait-status
 	while(running) {
 
 		lastFrame = SDL_GetTicks();
@@ -52,6 +54,6 @@ void Game::render() {
 	if (timerFPS < (1000/60)) {
 		SDL_Delay((1000/60)-timerFPS);
 	}
-	
+	//trying to commit
 	SDL_RenderPresent(ren);
 }
