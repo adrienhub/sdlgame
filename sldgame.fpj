@@ -15,8 +15,8 @@
 		<ProductVersion Value="1.0.0.0"/>
 		<AutoIncrementBuild Value="No"/>
 	</VersionInfo>
-	<Libs Value="-mwindows -lmingw32 -lSDL2main -lSDL2"/>
-	<Flags Value=""/>
+	<Libs Value="-mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image"/>
+	<Flags Value="-Iinclude"/>
 	<Target Value="sldgame.exe"/>
 	<CommandLine Value=""/>
 	<CompilerOptions Value="-Wall -s"/>
@@ -32,6 +32,8 @@
 		<File Name="main.cpp"/>
 		<File Name="game.cpp"/>
 		<File Name="game.h"/>
+		<File Name="object.h"/>
+		<File Name="object.cpp"/>
 	</Files>
 	<AppIcon>
 		0000010001002020000000002000B41000001600000028000000200000004000

@@ -2,14 +2,19 @@
 <Layout>
 	<Files>
 		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="1">
-			<Cursor Line="3" Column="13"/>
+			<Cursor Line="9" Column="2"/>
 		</File>
-		<File Name="game.h" Top="No" Tabpos="2" TopLine="1">
-			<Cursor Line="13" Column="8"/>
-			<Selection Line="13" Column="14"/>
+		<File Name="game.h" Top="Yes" Tabpos="2" TopLine="1">
+			<Cursor Line="16" Column="19"/>
 		</File>
-		<File Name="game.cpp" Top="Yes" Tabpos="3" TopLine="1">
-			<Cursor Line="10" Column="12"/>
+		<File Name="game.cpp" Top="No" Tabpos="3" TopLine="1">
+			<Cursor Line="20" Column="20"/>
+		</File>
+		<File Name="object.h" Top="No" Tabpos="4" TopLine="1">
+			<Cursor Line="5" Column="20"/>
+		</File>
+		<File Name="object.cpp" Top="No" Tabpos="5" TopLine="1">
+			<Cursor Line="2" Column="1"/>
 		</File>
 	</Files>
 </Layout>

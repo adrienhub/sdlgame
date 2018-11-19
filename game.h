@@ -4,6 +4,9 @@
 #include <iostream>
 using namespace std;
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h> //installed separately not comes with SDL https://www.libsdl.org/projects/SDL_image/
+
+#include "object.h"
 
 class Game {
 public:
