@@ -9,19 +9,21 @@ using namespace std;
 #include "object.h"
 
 class Game {
-public:
+	public:
 		Game();
 		~Game();
 		void loop();
-		void update(){};
+		void update() {};
+		void input() {};
 		void render();
-		void input(){};
-private:	
-	SDL_Renderer* ren;
-	SDL_Window* win;	
-	bool running;
-	int count;
-	int frameCount, timerFPS, lastFrame;
+		void draw(Object o);
+	private:
+		SDL_Renderer * ren;
+		SDL_Window * win;
+		bool running;
+		int count;
+		int frameCount, timerFPS, lastFrame;
+		Object star;
 };
 
 #endif //GAME_H
