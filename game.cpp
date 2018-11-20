@@ -47,7 +47,7 @@ void Game::loop() {
 			render();
 			input();
 			update();
-			draw(star); //layer? superposition stuff?
+			//draw(star); //layer? superposition stuff?
 			if (count > 3) running = false;
 		}
 	}
@@ -86,7 +86,7 @@ void Game::draw(Object o){
 	SDL_RenderCopyEx(ren, o.getTex(), &src, &dest, 0, NULL, SDL_FLIP_NONE); //SDL_RendererFlip 
 }
 
-void Game::draw(const char* msg, int x, int y, int r, int g, int b, int a,int size) {
+void Game::draw(const char* msg, int x, int y , int r, int g, int b, int a,int size) {
 	SDL_Surface* surf;
 	SDL_Texture* tex;
 	TTF_Font* font = TTF_OpenFont("assets/fonts/m3x6.ttf", size);

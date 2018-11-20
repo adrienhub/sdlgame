@@ -17,6 +17,7 @@ class Object {
 		Object(){};
 		SDL_Rect getDest() const {return dest;}
 		SDL_Rect getSource() const {return  src;}
+		SDL_Texture* getTex() const {return  tex;}
 		void setDest(int x, int y, int w, int h);
 		void setSource(int x, int y, int w, int h);
 		void setImage(string fileName, SDL_Renderer * ren);
