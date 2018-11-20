@@ -20,6 +20,9 @@ Game::~Game() {
 void Game::loop() {
 	//while loop makes mouse windows wait mode? -> try SDL EVENT
 	//https://stackoverflow.com/questions/13809187/sdl-c-issues-window-in-wait-status
+	
+	
+	
 	while(running) {
 		SDL_Event event; //thaey say you need to process your events inside loop
 		while (SDL_PollEvent( & event)) {
@@ -31,6 +34,8 @@ void Game::loop() {
 				count++;
 			}
 
+			//star.setImage("dada", ren);
+			
 			render();
 			input();
 			update();

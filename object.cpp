@@ -16,22 +16,14 @@ void Object::setSource(int x, int y, int w, int h) {
 }
 
 void Object::setImage(string fileName, SDL_Renderer* ren){
-	string f = "G#GDRIVEGameMakerProjectsGBMiniShmupspritesplayer/player_eject_north.png";
-	tex = SDL_CreateTextureFromSurface(ren, NULL);	 
-  	SDL_Surface* image =  IMG_Load(f.c_str());
-/*	  if (!image ) {
-	  	cout << "img not found";
-	  }
-	  */		
-//	tex = SDL_CreateTextureFromSurface(ren, image);	  
 
-	/*
 	SDL_Surface* image = IMG_Load("sample.png"); //filename! CARE when using files/load/save etc, acces and shiet can happen
-	if (!image ) {
-		//SDL_LogError(0, "Image fail " );
+	if (image == NULL) {
+		SDL_Window* w = SDL_CreateWindow("erro", 0 ,0 ,100 ,100, 0);
+		SDL_ShowWindow(w);
 	} else {
-			tex = SDL_CreateTextureFromSurface(ren, image);	  		
+	     tex = SDL_CreateTextureFromSurface(ren, image);	  		
 	}
-	*/
+	
 
 }
