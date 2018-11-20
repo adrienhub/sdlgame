@@ -5,7 +5,7 @@
 using namespace std;
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h> //installed separately not comes with SDL https://www.libsdl.org/projects/SDL_image/
-
+#include <SDL2/SDL_ttf.h>
 #include "object.h"
 
 class Game {
@@ -17,6 +17,7 @@ class Game {
 		void input() {};
 		void render();
 		void draw(Object o);
+		void draw(const char* msg, int x, int y, int r, int g, int b, int a,int size);
 	private:
 		SDL_Renderer * ren;
 		SDL_Window * win;
