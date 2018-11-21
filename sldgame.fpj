@@ -15,7 +15,7 @@
 		<ProductVersion Value="1.0.0.0"/>
 		<AutoIncrementBuild Value="No"/>
 	</VersionInfo>
-	<Libs Value="-mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image"/>
+	<Libs Value="-mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf"/>
 	<Flags Value="-Iinclude"/>
 	<Target Value="sldgame.exe"/>
 	<CommandLine Value=""/>

@@ -1,19 +1,26 @@
 #include "game.h"
 
+bool debugmode = 0;
+int resize = 3;
+int res_w = 160;
+int res_h = 144;
+
 Game::Game() {
 	SDL_Init(0);
-	int r = 1;
+
 	//ratio wide 1.78 gb rez 160*144, 427*240
-	SDL_CreateWindowAndRenderer(160 * r, 144 * r, 0, & win, & ren); //window flags SDL_WINDOW_BORDERLESS
+	SDL_CreateWindowAndRenderer(res_w * resize, res_h * resize, 0, & win, & ren); //window flags SDL_WINDOW_BORDERLESS
 	SDL_SetWindowTitle( win, "Our first game");
 	TTF_Init();
+	font = TTF_OpenFont("assets/fonts/m3x6.ttf", 18*resize);
+
 	running = true;
-	count = 0;
-	
-	star.setDest(80-8,72-8,16,16);
-	star.setSource(0,0,16,16);	
+	//count = 0;
+
+	star.setDest(80 - 8, 72 - 8, 16, 16);
+	star.setSource(0, 0, 16, 16);
 	star.setImage("assets/medal.png", ren);
-	
+
 	loop();
 }
 
@@ -27,29 +34,31 @@ Game::~Game() {
 void Game::loop() {
 	//while loop makes mouse windows wait mode? -> try SDL EVENT
 	//https://stackoverflow.com/questions/13809187/sdl-c-issues-window-in-wait-status
-	
-	
-	
-	while(running) {
-		SDL_Event event; //thaey say you need to process your events inside loop
-		while (SDL_PollEvent( & event)) {
-			lastFrame = SDL_GetTicks();
-			static int lastTime;
-			if (lastFrame >= (lastTime + 1000)) {
-				lastTime = lastFrame;
-				frameCount = 0;
-				count++;
-			}
 
-			//star.setImage("dada", ren);
-			
-			
-			render();
-			input();
-			update();
-			//draw(star); //layer? superposition stuff?
-			if (count > 3) running = false;
+
+
+	while(running) {
+		// SDL_Event event; //thaey say you need to process your events inside game loop
+		// while (SDL_PollEvent( & event)) {
+		lastFrame = SDL_GetTicks();
+		static int lastTime;
+		//if (debugmode) cout << "lastFrame " << lastFrame << endl;
+		if (lastFrame >= (lastTime + 1000)) {
+			lastTime = lastFrame;
+			frameCount = 0;
+			//if (debugmode) cout << "frameCount " << frameCount << endl;
+			//count++;
 		}
+
+		//star.setImage("dada", ren);
+
+
+		render();
+		input();
+		update();
+		//draw(star); //layer? superposition stuff?
+		//if (count > 3) running = false;
+		// }
 	}
 }
 
@@ -58,43 +67,66 @@ void Game::render() {
 	//58,101,90 - medium green
 	//119,175,104 - light green
 	//220,254,207 - light
-	
+
 	SDL_SetRenderDrawColor(ren, 33, 11, 46, 256); //rgba
-	SDL_SetRenderDrawColor(ren, 58, 101, 90, 256); //rgba	
+	SDL_SetRenderDrawColor(ren, 58, 101, 90, 256); //rgba
 	SDL_Rect rect;
-	rect.x = rect.y = 0;
-	rect.w = 160;
-	rect.h = 144;
-	SDL_RenderFillRect(ren, & rect); //? fills screen and cover all of imgs on top :/
-	
+	if (resize > 1) {
+		   int W = res_w*resize;
+		   int H = res_h*resize;
+		   int midleX = W/2;
+		   int midleY = H/2;
+		   	rect.x = rect.y = 0;
+			rect.w = W; //160;
+			rect.h = H; //144;
+			SDL_SetRenderDrawColor(ren, 33, 11, 46, 256); //dark
+			SDL_RenderFillRect(ren, & rect); // Draw Rect
+			rect.x = midleX - (res_w/2);
+			rect.y = midleY - (res_h/2);
+			rect.w = res_w; //160;
+			rect.h = res_h; //144;
+			SDL_SetRenderDrawColor(ren, 58, 101, 90, 256); //rgba
+			SDL_RenderFillRect(ren, & rect); // Draw Rect
+		   	
+	} else {
+		rect.x = rect.y = 0;
+		rect.w = res_w; //160;
+		rect.h = res_h; //144;
+		SDL_RenderFillRect(ren, & rect); //? fills screen and cover all of imgs on top :/
+	}
+
 	draw(star);
-	draw("bla bla game?", 10, 10, 255,255,255,255, 18);
-	
+	draw("bla bla game?", 10, 10, 255, 255, 255, 255);
+	//if (debugmode) cout << "render()" << endl;
+
 	frameCount++;
 	int timerFPS = SDL_GetTicks() - lastFrame;
 	if (timerFPS < (1000 / 60)) {
 		SDL_Delay((1000 / 60) - timerFPS);
+		//if (debugmode) cout << "Delay " << frameCount << endl;
 	}
 	//trying to commit
 	SDL_RenderPresent(ren);
 	//SDL_RenderClear(ren);
 }
-
-void Game::draw(Object o){
+//rescale https://gamedev.stackexchange.com/questions/102870/rescale-pixel-art-scenery-before-rendering-in-sdl2
+void Game::draw(Object o) {
+	//rescale obj?
 	SDL_Rect dest = o.getDest();
-	SDL_Rect src = o.getSource();	
-	SDL_RenderCopyEx(ren, o.getTex(), &src, &dest, 0, NULL, SDL_FLIP_NONE); //SDL_RendererFlip 
+	dest.w = dest.w*resize;
+	dest.h = dest.h*resize;
+	SDL_Rect src = o.getSource();
+	SDL_RenderCopyEx(ren, o.getTex(), & src, & dest, 0, NULL, SDL_FLIP_NONE); //SDL_RendererFlip
 }
 
-void Game::draw(const char* msg, int x, int y , int r, int g, int b, int a,int size) {
-	SDL_Surface* surf;
-	SDL_Texture* tex;
-	TTF_Font* font = TTF_OpenFont("assets/fonts/m3x6.ttf", size);
+void Game::draw(const char * msg, int x, int y , int r, int g, int b, int a) {
+	SDL_Surface * surf;
+	SDL_Texture * tex;
 	SDL_Color color;
-	color.r=r;
-	color.g=g;
-	color.b=b;
-	color.a=a;
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	color.a = a;
 	SDL_Rect rect;
 	surf = TTF_RenderText_Solid(font, msg, color);
 	tex = SDL_CreateTextureFromSurface(ren, surf);
@@ -103,6 +135,32 @@ void Game::draw(const char* msg, int x, int y , int r, int g, int b, int a,int s
 	rect.w = surf->w;
 	rect.h = surf->h;
 	SDL_FreeSurface(surf);
-	SDL_RenderCopy(ren, tex, NULL, &rect);
+	SDL_RenderCopy(ren, tex, NULL, & rect);
 	SDL_DestroyTexture(tex);
+}
+
+void Game::input() {
+	SDL_Event e; //thaey say you need to process your events inside loop
+	while(SDL_PollEvent( & e)) {
+		//wcout << "Event " << e.type << endl;
+		if (e.type == SDL_QUIT) {
+			running = false;
+			cout << "Quiting" << endl;
+		}
+		if (e.type == SDL_KEYDOWN) {
+			if (e.key.keysym.sym == SDLK_ESCAPE) {
+				running = false;
+				cout << "escape?" << endl;
+			}
+			if (e.key.keysym.sym == SDLK_w) {
+				cout << "w down" << endl;
+			}
+		}
+		if (e.type == SDL_KEYUP) {
+			if (e.key.keysym.sym == SDLK_w) {
+				cout << "w up" << endl;
+			}
+		}
+		SDL_GetMouseState( & mousex, & mousey);
+	}
 }
