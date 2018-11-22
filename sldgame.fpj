@@ -15,7 +15,7 @@
 		<ProductVersion Value="1.0.0.0"/>
 		<AutoIncrementBuild Value="No"/>
 	</VersionInfo>
-	<Libs Value="-mwindows -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf"/>
+	<Libs Value="-lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_image"/>
 	<Flags Value="-Iinclude"/>
 	<Target Value="sldgame.exe"/>
 	<CommandLine Value=""/>
@@ -27,7 +27,7 @@
 	<EnableTheme Value="No"/>
 	<RequiresAdmin Value="No"/>
 	<CompilerType Value="CPP"/>
-	<AppType Value="GUI"/>
+	<AppType Value="CONSOLE"/>
 	<Files>
 		<File Name="main.cpp"/>
 		<File Name="game.cpp"/>

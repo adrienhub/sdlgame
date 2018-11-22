@@ -5,7 +5,7 @@
 using namespace std;
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h> //installed separately not comes with SDL https://www.libsdl.org/projects/SDL_image/
-#include <SDL2/SDL_ttf.h>
+#include <SDL2/SDL_ttf.h> //TODO create a github repo with MinGW(Falcon) compiler(libs hell)
 #include "object.h"
 
 class Game {

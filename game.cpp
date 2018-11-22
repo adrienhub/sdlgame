@@ -6,7 +6,16 @@ int res_w = 160;
 int res_h = 144;
 
 Game::Game() {
-	SDL_Init(0);
+	SDL_Init(SDL_INIT_EVERYTHING);
+	
+	SDL_DisplayMode desktop;  
+	SDL_GetDesktopDisplayMode(0,&desktop);
+	cout << "Display desktop WxH:" << desktop.w << "x" << desktop.h << endl; 
+	//SDL_Log("Display resolution is: %d %d  %d", desktop.w, desktop.h, desktop.refresh_rate);
+	// SDL_DisplayMode current;  
+	// SDL_GetCurrentDisplayMode(0,&current);
+	// cout << "Current Display WxH:" << current.w << "x" << current.h << endl;
+	//TODO Use current size to make a proper rescale 	
 
 	//ratio wide 1.78 gb rez 160*144, 427*240
 	SDL_CreateWindowAndRenderer(res_w * resize, res_h * resize, 0, & win, & ren); //window flags SDL_WINDOW_BORDERLESS
@@ -93,6 +102,7 @@ void Game::render() {
 		rect.w = res_w; //160;
 		rect.h = res_h; //144;
 		SDL_RenderFillRect(ren, & rect); //? fills screen and cover all of imgs on top :/
+		//why
 	}
 
 	draw(star);
