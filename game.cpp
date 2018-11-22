@@ -4,7 +4,7 @@ bool debugmode = 0;
 int resize = 3;
 int res_w = 160;
 int res_h = 144;
-
+//test vi in gitbash
 Game::Game() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	
