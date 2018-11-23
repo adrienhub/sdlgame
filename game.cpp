@@ -43,7 +43,7 @@ Game::Game() {
 	player.setImage("", ren);
 	player.setDest(res_w/2, res_h/2, 16, 16);
 	// idle = player.createCycle(); //row 0- pixel wdth
-	// attack = player
+	// attack = player ~15m
 	
 	loop();
 }

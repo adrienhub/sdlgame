@@ -36,6 +36,8 @@
 		<File Name="object.cpp"/>
 		<File Name="audio.h"/>
 		<File Name="audio.cpp"/>
+		<File Name="entity.h"/>
+		<File Name="entity.cpp"/>
 	</Files>
 	<AppIcon>
 		0000010001002020000000002000B41000001600000028000000200000004000
