@@ -4,19 +4,18 @@
 		<File Name="main.cpp" Top="No" Tabpos="1" TopLine="1">
 			<Cursor Line="8" Column="11"/>
 		</File>
-		<File Name="game.h" Top="Yes" Tabpos="2" TopLine="1">
-			<Cursor Line="11" Column="7"/>
-			<Selection Line="11" Column="11"/>
+		<File Name="game.h" Top="No" Tabpos="2" TopLine="1">
+			<Cursor Line="18" Column="13"/>
 		</File>
-		<File Name="object.h" Top="No" Tabpos="3" TopLine="1">
-			<Cursor Line="20" Column="16"/>
-			<Selection Line="20" Column="22"/>
+		<File Name="game.cpp" Top="Yes" Tabpos="3" TopLine="36">
+			<Cursor Line="54" Column="20"/>
 		</File>
-		<File Name="object.cpp" Top="No" Tabpos="4" TopLine="1">
-			<Cursor Line="21" Column="49"/>
+		<File Name="audio.h" Top="No" Tabpos="4" TopLine="1">
+			<Cursor Line="12" Column="7"/>
+			<Selection Line="12" Column="11"/>
 		</File>
-		<File Name="game.cpp" Top="No" Tabpos="5" TopLine="1">
-			<Cursor Line="77" Column="23"/>
+		<File Name="audio.cpp" Top="No" Tabpos="5" TopLine="1">
+			<Cursor Line="15" Column="62"/>
 		</File>
 	</Files>
 </Layout>
