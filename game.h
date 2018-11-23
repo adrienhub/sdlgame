@@ -8,13 +8,14 @@ using namespace std;
 #include <SDL2/SDL_ttf.h> //TODO create a github repo with MinGW(Falcon) compiler(libs hell)
 #include "object.h"
 #include "audio.h"
+#include "entity.h"
 
 class Game {
 	public:
 		Game();
 		~Game();
 		void loop();
-		void update() {};
+		void update();
 		void input();
 		void render();
 		void draw(Object o);
@@ -29,6 +30,8 @@ class Game {
 		Object star;
 		int mousex, mousey;
 		Audio effect;
+		Entity player;
+		int idle, attack;
 };
 
 #endif //GAME_H

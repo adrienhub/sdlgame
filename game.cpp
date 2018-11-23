@@ -4,7 +4,7 @@ bool debugmode = 0;
 int resize = 1;
 int res_w = 160;
 int res_h = 144;
-//test vi in gitbash
+
 Game::Game() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	
@@ -40,6 +40,11 @@ Game::Game() {
 	
 	effect.load("assets/sounds/fusil-tiro.wav");
 
+	player.setImage("", ren);
+	player.setDest(res_w/2, res_h/2, 16, 16);
+	// idle = player.createCycle(); //row 0- pixel wdth
+	// attack = player
+	
 	loop();
 }
 
@@ -54,9 +59,7 @@ Game::~Game() {
 void Game::loop() {
 	//while loop makes mouse windows wait mode? -> try SDL EVENT
 	//https://stackoverflow.com/questions/13809187/sdl-c-issues-window-in-wait-status
-
-
-
+	
 	while(running) {
 		// SDL_Event event; //thaey say you need to process your events inside game loop
 		// while (SDL_PollEvent( & event)) {
@@ -71,8 +74,6 @@ void Game::loop() {
 		}
 
 		//star.setImage("dada", ren);
-
-
 		render();
 		input();
 		update();
@@ -185,4 +186,8 @@ void Game::input() {
 		}
 		SDL_GetMouseState( & mousex, & mousey);
 	}
+}
+
+void Game::update(){
+	
 }
