@@ -1,7 +1,7 @@
 #include "game.h"
 
 bool debugmode = 0;
-int resize = 3;
+int resize = 1;
 int res_w = 160;
 int res_h = 144;
 //test vi in gitbash
@@ -23,12 +23,22 @@ Game::Game() {
 	TTF_Init();
 	font = TTF_OpenFont("assets/fonts/m3x6.ttf", 18*resize);
 
+	
+	//Initialize SDL_mixer
+    if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
+    {
+        cout << "Error opening sound device" << endl;  
+    }
+	Mix_Init(MIX_INIT_OGG); //http://lazyfoo.net/SDL_tutorials/lesson11/index.php
+	
 	running = true;
 	//count = 0;
 
 	star.setDest(80 - 8, 72 - 8, 16, 16);
 	star.setSource(0, 0, 16, 16);
 	star.setImage("assets/medal.png", ren);
+	
+	effect.load("assets/sounds/fusil-tiro.wav");
 
 	loop();
 }
@@ -36,6 +46,7 @@ Game::Game() {
 Game::~Game() {
 	SDL_DestroyRenderer(ren);
 	SDL_DestroyWindow(win);
+	Mix_CloseAudio();
 	SDL_Quit();
 	TTF_Quit();
 }
@@ -77,8 +88,8 @@ void Game::render() {
 	//119,175,104 - light green
 	//220,254,207 - light
 
-	SDL_SetRenderDrawColor(ren, 33, 11, 46, 256); //rgba
-	SDL_SetRenderDrawColor(ren, 58, 101, 90, 256); //rgba
+	SDL_SetRenderDrawColor(ren, 33, 11, 46, 255); //rgba
+	SDL_SetRenderDrawColor(ren, 58, 101, 90, 255); //rgba
 	SDL_Rect rect;
 	if (resize > 1) {
 		   int W = res_w*resize;
@@ -88,13 +99,13 @@ void Game::render() {
 		   	rect.x = rect.y = 0;
 			rect.w = W; //160;
 			rect.h = H; //144;
-			SDL_SetRenderDrawColor(ren, 33, 11, 46, 256); //dark
+			SDL_SetRenderDrawColor(ren, 33, 11, 46, 255); //dark
 			SDL_RenderFillRect(ren, & rect); // Draw Rect
 			rect.x = midleX - (res_w/2);
 			rect.y = midleY - (res_h/2);
 			rect.w = res_w; //160;
 			rect.h = res_h; //144;
-			SDL_SetRenderDrawColor(ren, 58, 101, 90, 256); //rgba
+			SDL_SetRenderDrawColor(ren, 58, 101, 90, 255); //rgba
 			SDL_RenderFillRect(ren, & rect); // Draw Rect
 		   	
 	} else {
@@ -164,6 +175,7 @@ void Game::input() {
 			}
 			if (e.key.keysym.sym == SDLK_w) {
 				cout << "w down" << endl;
+				effect.play();
 			}
 		}
 		if (e.type == SDL_KEYUP) {

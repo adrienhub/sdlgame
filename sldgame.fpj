@@ -34,6 +34,8 @@
 		<File Name="game.h"/>
 		<File Name="object.h"/>
 		<File Name="object.cpp"/>
+		<File Name="audio.h"/>
+		<File Name="audio.cpp"/>
 	</Files>
 	<AppIcon>
 		0000010001002020000000002000B41000001600000028000000200000004000
