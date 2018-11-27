@@ -34,13 +34,16 @@ Game::Game() {
 	running = true;
 	//count = 0;
 
+	//load image/object
 	star.setDest(80 - 8, 72 - 8, 16, 16);
 	star.setSource(0, 0, 16, 16);
-	star.setImage("assets/medal.png", ren);
+	star.setImage("assets/ui/medal.gif", ren);
 	
 	effect.load("assets/sounds/fusil-tiro.wav");
 
-	player.setImage("", ren);
+	//setup animatio 14:23 https://www.youtube.com/watch?v=GDtd6EQWBa0&t=1258s
+	 
+	player.setImage("setimage player", ren);
 	player.setDest(res_w/2, res_h/2, 16, 16);
 	// idle = player.createCycle(); //row 0- pixel wdth
 	// attack = player ~15m

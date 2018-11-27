@@ -18,6 +18,11 @@ void Object::setSource(int x, int y, int w, int h) {
 void Object::setImage(string fileName, SDL_Renderer* ren){
 
 	SDL_Surface* image = IMG_Load(fileName.c_str()); //filename! CARE when using files/load/save etc, acces and shiet can happen
+	if (image == NULL) {
+		cout << "setImage(): image not found: " << fileName << endl;
+	} else {
+		cout << "setImage(): image loaded with succes: " << fileName << endl;
+	}
 	tex = SDL_CreateTextureFromSurface(ren, image);
 	// if (image == NULL) {
 	// 	SDL_Window* w = SDL_CreateWindow("erro", 0 ,0 ,100 ,100, 0);
