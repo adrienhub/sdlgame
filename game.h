@@ -31,7 +31,7 @@ class Game {
 		int mousex, mousey;
 		Audio effect;
 		Entity player;
-		int idle, attack;
+		int player_idle, player_attack, player_rotate;
 };
 
 #endif //GAME_H

@@ -43,10 +43,12 @@ Game::Game() {
 
 	//setup animatio 14:23 https://www.youtube.com/watch?v=GDtd6EQWBa0&t=1258s
 	 
-	player.setImage("setimage player", ren);
-	player.setDest(res_w/2, res_h/2, 16, 16);
-	// idle = player.createCycle(); //row 0- pixel wdth
-	// attack = player ~15m
+	player.setImage("assets/player/player_idle_d_strip6.png", ren);
+	//player.setDest(res_w/2, res_h/2, 16, 16);
+	player.setDest(16, 16, 16, 16);
+	player_idle = player.createCycle(1,7,8,6, 20);
+	player.setImage("assets/player/player_suit_strip10", ren);
+	player_rotate = player.createCycle(1,7,8,10, 20); //everything needs to be in a same spritesheet?
 	
 	loop();
 }
@@ -180,6 +182,11 @@ void Game::input() {
 			if (e.key.keysym.sym == SDLK_w) {
 				cout << "w down" << endl;
 				effect.play();
+			}
+			if (e.key.keysym.sym == SDLK_s) {
+				cout << "s down" << endl;
+				//effect.play();
+				player.setAnimation(rotate); //15.04
 			}
 		}
 		if (e.type == SDL_KEYUP) {

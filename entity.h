@@ -24,7 +24,10 @@ class Entity: public Object{
 	   	int getMaxHealth() const {
 		   return maxHealth;
 		}
-	   	int createCycle(int r, int w, int h, int amount, int speed);
+		/**
+		 * row in sprite sheet, width and height frame, amount of frames, speed of animation
+		 */
+	   	int createCycle(int row, int w, int h, int amount, int speed);
 	   	void setCurAnimation(int c){
 			begin = 0; 
 			curAnim = c;

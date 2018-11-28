@@ -1,9 +1,11 @@
 #include "entity.h"
 
-
-int Entity::createCycle(int r, int w, int h, int amount, int speed){
+/**
+ *  row in sprite sheet, width and height frame, amount of frames, speed of animation
+ */
+int Entity::createCycle(int row, int w, int h, int amount, int speed){
 	   	cycle tmp;
-	   	tmp.row = r;
+	   	tmp.row = r-1;
 	   	tmp.w = w;
 	   	tmp.h = h;
 	   	tmp.amount = amount;
@@ -14,7 +16,12 @@ int Entity::createCycle(int r, int w, int h, int amount, int speed){
 }
 
 void Entity::updateAnimation(){
-	setSource(animations[curAnim].w*animations[curAnim].tick, animations[curAnim].row*animations[curAnim].h  , animations[curAnim].w, animations[curAnim].h);
+	setSource(
+		animations[curAnim].w*animations[curAnim].tick, 
+		animations[curAnim].row*animations[curAnim].h, 
+		animations[curAnim].w, 
+		animations[curAnim].h
+		);
 	
 	if (begin > animations[curAnim].speed){
 		   animations[curAnim].tick++;
