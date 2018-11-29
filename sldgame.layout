@@ -13,8 +13,8 @@
 		<File Name="object.cpp" Top="No" Tabpos="4" TopLine="1">
 			<Cursor Line="11" Column="53"/>
 		</File>
-		<File Name="game.cpp" Top="Yes" Tabpos="5" TopLine="167">
-			<Cursor Line="189" Column="41"/>
+		<File Name="game.cpp" Top="Yes" Tabpos="5" TopLine="145">
+			<Cursor Line="156" Column="14"/>
 		</File>
 		<File Name="entity.h" Top="No" Tabpos="6" TopLine="9">
 			<Cursor Line="30" Column="14"/>
