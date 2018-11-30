@@ -33,6 +33,14 @@ class Entity: public Object{
 			curAnim = c;
 		}
 	   	void updateAnimation();
+	   	void reverse(bool r){
+		   rev = r;
+		}
+		void reverse(bool r, int nA){
+		   rev = r;
+		   nAb = 1;
+		   nA = newAnim;
+		}
 	   	
 	private:
 		int health, maxHealth;
@@ -47,6 +55,8 @@ class Entity: public Object{
 		vector<cycle> animations;
 		int curAnim;
 		int begin;
+		bool rev, nAb;
+		int newAnim;
 
 };
 

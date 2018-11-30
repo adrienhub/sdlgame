@@ -5,22 +5,22 @@
 			<Cursor Line="9" Column="2"/>
 		</File>
 		<File Name="game.h" Top="No" Tabpos="2" TopLine="1">
-			<Cursor Line="31" Column="22"/>
+			<Cursor Line="18" Column="8"/>
 		</File>
 		<File Name="object.h" Top="No" Tabpos="3" TopLine="1">
-			<Cursor Line="22" Column="13"/>
+			<Cursor Line="14" Column="13"/>
 		</File>
 		<File Name="object.cpp" Top="No" Tabpos="4" TopLine="1">
-			<Cursor Line="11" Column="53"/>
+			<Cursor Line="20" Column="21"/>
 		</File>
-		<File Name="game.cpp" Top="Yes" Tabpos="5" TopLine="145">
-			<Cursor Line="156" Column="14"/>
+		<File Name="game.cpp" Top="Yes" Tabpos="5" TopLine="1">
+			<Cursor Line="7" Column="8"/>
 		</File>
-		<File Name="entity.h" Top="No" Tabpos="6" TopLine="9">
-			<Cursor Line="30" Column="14"/>
+		<File Name="entity.h" Top="No" Tabpos="6" TopLine="12">
+			<Cursor Line="30" Column="16"/>
 		</File>
 		<File Name="entity.cpp" Top="No" Tabpos="7" TopLine="1">
-			<Cursor Line="8" Column="19"/>
+			<Cursor Line="16" Column="2"/>
 		</File>
 		<File Name="audio.h" Top="No" Tabpos="8" TopLine="1">
 			<Cursor Line="13" Column="7"/>

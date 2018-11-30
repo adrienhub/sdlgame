@@ -4,7 +4,7 @@ bool debugmode = 0;
 int resize = 1;
 int res_w = 160;
 int res_h = 144;
-
+//17:13
 Game::Game() {
 	SDL_Init(SDL_INIT_EVERYTHING);
 	
@@ -45,10 +45,12 @@ Game::Game() {
 	 
 	player.setImage("assets/player/player_idle_d_strip6.png", ren);
 	//player.setDest(res_w/2, res_h/2, 16, 16);
-	player.setDest(16, 16, 16, 16);
+	player.setSource(0,0,7,8);
+	player.setDest(100, 100, 16, 16);
 	player_idle = player.createCycle(1,7,8,6, 20);
-	player.setImage("assets/player/player_suit_strip10", ren);
-	player_rotate = player.createCycle(1,7,8,10, 20); //everything needs to be in a same spritesheet?
+	player.setCurAnimation(player_idle);
+	//player.setImage("assets/player/player_suit_strip10.png", ren);
+	//player_rotate = player.createCycle(1,7,8,10, 20); //everything needs to be in a same spritesheet?
 	
 	loop();
 }
@@ -123,6 +125,7 @@ void Game::render() {
 	}
 
 	draw(star);
+	draw(player);
 	draw("bla bla game?", 10, 10, 255, 255, 255, 255);
 	//if (debugmode) cout << "render()" << endl;
 
@@ -138,12 +141,12 @@ void Game::render() {
 }
 //rescale https://gamedev.stackexchange.com/questions/102870/rescale-pixel-art-scenery-before-rendering-in-sdl2
 void Game::draw(Object o) {
-	//rescale obj?
+	//rescale obj? 
 	SDL_Rect dest = o.getDest();
-	dest.w = dest.w*resize;
-	dest.h = dest.h*resize;
+	dest.w = dest.w * resize;
+	dest.h = dest.h * resize;
 	SDL_Rect src = o.getSource();
-	SDL_RenderCopyEx(ren, o.getTex(), & src, & dest, 0, NULL, SDL_FLIP_NONE); //SDL_RendererFlip
+	SDL_RenderCopyEx(ren, o.getTex(), &src, &dest, 0, NULL, SDL_FLIP_NONE); //SDL_RendererFlip
 }
 
 void Game::draw(const char * msg, int x, int y , int r, int g, int b, int a) {
@@ -186,7 +189,7 @@ void Game::input() {
 			if (e.key.keysym.sym == SDLK_s) {
 				cout << "s down" << endl;
 				//effect.play();
-				player.setAnimation(rotate); //15.04
+				//player.setCurAnimation(player_rotate); //15.04
 			}
 		}
 		if (e.type == SDL_KEYUP) {
@@ -199,5 +202,5 @@ void Game::input() {
 }
 
 void Game::update(){
-	
+	player.updateAnimation();
 }
